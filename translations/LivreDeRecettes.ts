@@ -18,6 +18,10 @@
         <source>Ajouter recette</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Sauvegarde en JSON</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecetteModele</name>

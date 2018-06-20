@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
+// home/disques/jeigonin/Qt/mersdk/Targets/SailfishOS-2.1.4.13-i486/usr/lib/qt5/qml
 
 Page {
     id: page
@@ -13,26 +13,17 @@ Page {
         title: recette.Nom
         id: header
     }
-    Flickable {
+    SilicaFlickable {
         anchors.top: header.bottom
+        anchors.bottom: parent.bottom
         width: parent.width
-        /*ScrollBar.vertical: ScrollBar {
-                parent: flickable.parent
-                anchors.top: flickable.top
-                anchors.left: flickable.right
-                anchors.bottom: flickable.bottom
-            }*/
+
+
         Column {
-        anchors.top:parent.bottom
+        anchors.top:parent.top
+        anchors.bottom: parent.bottom
         width: parent.width
-        /*
-        QString nom;
-        int temps;
-        int nombrePersonne;
-        float note;
-        QString description;
-        QString image;
-        */
+
 
         TextField {
             id: recetteNom
@@ -82,7 +73,7 @@ Page {
             text: recette.Note
             label: "Note"
             width: parent.width
-            validator: RegExpValidator { regExp: /\d{1,2}$/ }
+            validator: RegExpValidator { regExp: /\d{1,4}$/ }
             inputMethodHints: Qt.ImhDigitsOnly
             EnterKey.onClicked: {
                 recette.Note = recetteNote.text

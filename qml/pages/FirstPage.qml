@@ -22,6 +22,10 @@ Page {
                 text: qsTr("Ajouter recette")
                 onClicked: listView.model.ajouterRecette()
             }
+            MenuItem {
+                text: qsTr("Sauvegarde en JSON")
+                onClicked: listView.model.sauvegarder()
+            }
         }
 
         model: RecetteModele {  monCarnet: monLivre }

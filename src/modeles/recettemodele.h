@@ -1,7 +1,8 @@
 #ifndef RECETTEMODELE_H
 #define RECETTEMODELE_H
 #include <QAbstractListModel>
-
+#include <QFile>
+#include <QJsonDocument>
 #include "../donnees/carnetrecettes.h"
 
 
@@ -27,8 +28,16 @@ public:
     CarnetRecettes *recettes() const;
     void setRecettes(CarnetRecettes *carnet);
     void ajouterRecette(Recette *recette);
+
+    void ecrireJson(QJsonObject &json) const;
+    void lireJson(const QJsonObject &json);
+
     Q_INVOKABLE void ajouterRecette();
     Q_INVOKABLE void supprimerRecette(int row);
+    bool charger();
+    Q_INVOKABLE bool sauvegarder();
+
+
 
 protected:
     QHash<int,QByteArray> roleNames() const;

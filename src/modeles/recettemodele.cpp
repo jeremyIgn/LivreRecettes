@@ -116,6 +116,11 @@ void RecetteModele::ajouterRecette(Recette *recette)
     monCarnet->ajouterRecette(recette);
 }
 
+void RecetteModele::ecrireJson(QJsonObject &json) const
+{
+   monCarnet->ecrireJson(json);
+}
+
 void RecetteModele::ajouterRecette()
 {
     QString name(tr("Recette"));
@@ -127,6 +132,37 @@ void RecetteModele::supprimerRecette(int row)
     monCarnet->supprimerRecette(row);
 }
 
+bool RecetteModele::charger()
+{
+    QFile file(QString("recettes.json"));
+    if (!file.open(QIODevice::ReadWrite)) {
+            qWarning("Couldn't open save file.");
+            return false;
+    }
+    QByteArray donnees = file.readAll();
+    QJsonDocument document(QJsonDocument::fromJson(donnees));
+    lireJson(document.object());
+    return true;
+}
+
+bool RecetteModele::sauvegarder()
+{
+    QFile sauvegarde(QString("recettes.json"));
+    if (!sauvegarde.open(QIODevice::ReadWrite)) {
+            qWarning("Couldn't open save file.");
+            return false;
+    }
+    QJsonObject carnet;
+    ecrireJson(carnet);
+    QJsonDocument document;
+    sauvegarde.write(document.toJson());
+    return true;
+}
+
+void RecetteModele::lireJson(const QJsonObject &json)
+{
+    monCarnet->lireJson(json);
+}
 
 
 QHash<int, QByteArray> RecetteModele::roleNames() const

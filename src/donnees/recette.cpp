@@ -10,13 +10,18 @@ Recette::Recette(QString nom, QObject *parent) : QObject(parent), nom(nom)
     connect(this, &Recette::DescriptionChange, this ,&Recette::RecetteChange);
 }
 
+Recette::Recette(QObject *parent) : QObject(parent)
+{
+
+}
+
 
 QString Recette::Description() const
 {
     return description;
 }
 
-float Recette::Note() const
+double Recette::Note() const
 {
     return note;
 }
@@ -39,6 +44,25 @@ int Recette::NombrePersonne() const
 QString Recette::Image() const
 {
     return image;
+}
+
+void Recette::lireJson(const QJsonObject &json)
+{
+    SetNom(json["nom"].toString());
+    SetTemps(json["temps"].toInt());
+    SetNombrePersonne(json["nombrePersonne"].toInt());
+    SetNote(json["note"].toDouble());
+    SetDescription(json["description"].toString());
+}
+
+void Recette::ecrireJson(QJsonObject &json) const
+{
+    json["nom"] = Nom();
+    json["temps"] = Temps();
+    json["nombrePersonne"] = NombrePersonne();
+    json["note"] = Note();
+    json["description"] = Description();
+
 }
 
 void Recette::SetNom(QString value)
@@ -65,7 +89,7 @@ void Recette::SetNombrePersonne(int value)
     }
 }
 
-void Recette::SetNote(float value)
+void Recette::SetNote(double value)
 {
     if (note != value){
         note = value;
