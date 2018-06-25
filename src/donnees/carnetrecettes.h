@@ -10,6 +10,7 @@ class CarnetRecettes : public QObject
     QList<Recette*> carnetRecettes;
 public:
     explicit CarnetRecettes(QObject *parent = 0);
+
     QList<Recette *> Carnet() const;
     void ajouterRecette(Recette *recette);
     void supprimerRecette(int position);

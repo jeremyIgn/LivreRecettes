@@ -17,25 +17,22 @@ int main(int argc, char *argv[])
     qmlRegisterType<RecetteModele>("RecetteModele", 1, 0, "RecetteModele");
     qmlRegisterUncreatableType<CarnetRecettes>("RecetteModele", 1, 0, "CarnetRecettes", QStringLiteral("Don't define CarnetRecettes in QML!!") );
     qmlRegisterUncreatableType<Recette>("RecetteModele", 1, 0, "Recette", QStringLiteral("Don't define Recette in QML!!") );
-    CarnetRecettes modele;
-   /*
-    * RecetteModele model{};
-    * if (!model.charger()){
-        Recette *recette = new Recette("Tarte carotte");
-        Recette *recette2 = new Recette("Tarte au citron");
+   //CarnetRecettes *modele = new CarnetRecettes()
 
-        model.ajouterRecette(recette);
-        model.ajouterRecette(recette2);
-
-    }*/
+    RecetteModele model;
     Recette *recette = new Recette("Tarte carotte");
     Recette *recette2 = new Recette("Tarte au citron");
 
-    modele.ajouterRecette(recette);
-    modele.ajouterRecette(recette2);
+    if (!model.charger()){
+        model.ajouterRecette(recette);
+        model.ajouterRecette(recette2);
 
+    }
+    if (model.recettes()->count() == 0){
 
-    view->rootContext()->setContextProperty("monLivre", &modele);
+        model.ajouterRecette(recette2);
+    }
+    view->rootContext()->setContextProperty("monLivre", model.recettes());
 
     view->setSource(SailfishApp::pathTo("qml/LivreDeRecettes.qml"));
     view->show();

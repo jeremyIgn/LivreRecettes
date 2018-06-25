@@ -2,6 +2,10 @@
 
 Recette::Recette(QString nom, QObject *parent) : QObject(parent), nom(nom)
 {
+    note = 0.0;
+    temps = 0;
+    description = "";
+    nombrePersonne = 1;
     connect(this, &Recette::NomChange, this, &Recette::RecetteChange);
     connect(this, &Recette::TempsChange, this ,&Recette::RecetteChange);
     connect(this, &Recette::NoteChange, this ,&Recette::RecetteChange);

@@ -3,8 +3,9 @@
 
 RecetteModele::RecetteModele(QObject *parent): QAbstractListModel(parent), monCarnet(nullptr)
 {
-
+    monCarnet = new CarnetRecettes();
 }
+
 
 int RecetteModele::rowCount(const QModelIndex &parent) const
 {

@@ -5,6 +5,7 @@ CarnetRecettes::CarnetRecettes(QObject *parent) : QObject(parent)
 
 }
 
+
 QList<Recette *> CarnetRecettes::Carnet() const
 {
     return carnetRecettes;
