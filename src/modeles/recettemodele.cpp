@@ -135,9 +135,10 @@ void RecetteModele::supprimerRecette(int row)
 
 bool RecetteModele::charger()
 {
-    QFile file(QString("recettes.json"));
+    QString name = QStandardPaths::writableLocation(QStandardPaths::DataLocation)+"/recettes.json";
+    QFile file(name);
     if (!file.open(QIODevice::ReadWrite)) {
-            qWarning("Couldn't open save file.");
+            qWarning("Couldn't open load file.");
             return false;
     }
     QByteArray donnees = file.readAll();
@@ -148,7 +149,8 @@ bool RecetteModele::charger()
 
 bool RecetteModele::sauvegarder()
 {
-    QFile sauvegarde(QString("recettes.json"));
+    QString name = QStandardPaths::writableLocation(QStandardPaths::DataLocation)+"/recettes.json";
+    QFile sauvegarde(name);
     if (!sauvegarde.open(QIODevice::ReadWrite)) {
             qWarning("Couldn't open save file.");
             return false;
