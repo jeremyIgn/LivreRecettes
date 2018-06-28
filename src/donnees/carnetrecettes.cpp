@@ -12,8 +12,6 @@ QList<Recette *> CarnetRecettes::Carnet() const
 
 }
 
-
-
 void CarnetRecettes::ajouterRecette(Recette *recette)
 {
    emit preItemAppended();

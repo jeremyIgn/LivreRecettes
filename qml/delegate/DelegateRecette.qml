@@ -6,9 +6,6 @@ import "../pages"
 ListItem {
     id: recetteItem
     width: listView.width
-    Label {
-        text: Nom
-    }
     menu: ContextMenu {
         MenuItem {
             text: "Supprimer de la liste"
@@ -16,6 +13,11 @@ ListItem {
         }
 
     }
+
+    Label {
+        text: Nom
+    }
+
     onClicked: pageStack.push( recettePage, { recette: Recette }  )
     Component {
         id: recettePage

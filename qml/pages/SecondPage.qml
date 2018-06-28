@@ -1,29 +1,26 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-// home/disques/jeigonin/Qt/mersdk/Targets/SailfishOS-2.1.4.13-i486/usr/lib/qt5/qml
+
 
 Page {
     id: page
-
     property var recette
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
 
     PageHeader {
         title: recette.Nom
         id: header
     }
+
     SilicaFlickable {
         anchors.top: header.bottom
         anchors.bottom: parent.bottom
         width: parent.width
 
-
         Column {
         anchors.top:parent.top
         anchors.bottom: parent.bottom
         width: parent.width
-
 
         TextField {
             id: recetteNom

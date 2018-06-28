@@ -4,11 +4,7 @@ import RecetteModele 1.0
 import "../delegate"
 Page {
     id: page
-
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
-
-    // To enable PullDownMenu, place our content in a SilicaFlickable
 
     SilicaListView {
         id: listView

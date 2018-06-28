@@ -19,7 +19,7 @@ public:
         NombrePersonneRole,
         NoteRole,
         DescriptionRole,
-        ImageRole,
+        ImageRole, //Non utilisé
         RecetteRole
     };
     RecetteModele(QObject *parent = nullptr);

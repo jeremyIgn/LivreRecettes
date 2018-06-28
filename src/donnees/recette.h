@@ -11,7 +11,7 @@ class Recette : public QObject
     Q_PROPERTY(int NombrePersonne READ NombrePersonne WRITE SetNombrePersonne NOTIFY NombrePersonneChange)
     Q_PROPERTY(double Note READ Note WRITE SetNote NOTIFY NoteChange)
     Q_PROPERTY(QString Description READ Description WRITE SetDescription NOTIFY DescriptionChange)
-    Q_PROPERTY(QString Image READ Image WRITE SetImage NOTIFY ImageChange)
+    Q_PROPERTY(QString Image READ Image WRITE SetImage NOTIFY ImageChange) //Non utilisé
 public:
     explicit Recette(QString nom, QObject *parent = nullptr);
     explicit Recette(QObject *parent = nullptr);
@@ -20,7 +20,7 @@ public:
     QString Nom() const;
     int Temps() const;
     int NombrePersonne() const;
-    QString Image() const;
+    QString Image() const; //Non utilisé
     void lireJson(const QJsonObject &json);
     void ecrireJson(QJsonObject &json) const;
 private:
@@ -29,7 +29,7 @@ private:
     int nombrePersonne;
     double note;
     QString description;
-    QString image;
+    QString image; //Non utilisé
 signals:
 
     void NomChange(QString value);
@@ -37,7 +37,7 @@ signals:
     void NombrePersonneChange(int value);
     void NoteChange(double value);
     void DescriptionChange(QString value);
-    void ImageChange(QString value);
+    void ImageChange(QString value); //Non utilisé
     void RecetteChange();
 
 public slots:
@@ -47,7 +47,7 @@ public slots:
     void SetNombrePersonne(int value);
     void SetNote(double value);
     void SetDescription(QString value);
-    void SetImage(QString value);
+    void SetImage(QString value); //Non utilisé
 };
 
 #endif // RECETTE_H

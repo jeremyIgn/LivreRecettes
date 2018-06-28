@@ -1,7 +1,7 @@
 #include "recettemodele.h"
 
 
-RecetteModele::RecetteModele(QObject *parent): QAbstractListModel(parent), monCarnet(nullptr)
+RecetteModele::RecetteModele(QObject *parent): QAbstractListModel(parent)
 {
     monCarnet = new CarnetRecettes();
 }
